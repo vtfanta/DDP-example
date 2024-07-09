@@ -4,6 +4,8 @@ using Random
 using Tullio # for tensor multiplication
 
 function DDP_iteration(X, U, loss, loss_final, state_eq; α = 1)
+    # notation from https://doi.org/10.1109/ICRA.2014.6907001
+
     n, N = size(X)
     m = size(U, 1)
 
