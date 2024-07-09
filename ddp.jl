@@ -93,7 +93,6 @@ dt = T_final / N
 n = 2   # State dimension
 m = 1   # Control dimension
 
-
 Random.seed!(1234)
 U = rand(m,N-1) * 0.3 .- 0.15   # Random control sequence
 # U = [0.3*ones(m, N÷2) -0.2*ones(m, N÷2)]
@@ -111,6 +110,7 @@ Vs = []     # Store value function
 
 iterations = 15
 for k in 1:iterations
+    global X, U
     Xnew, Unew, V = DDP_iteration(X, U, loss, loss_final, state_eq, α=0.5)  # Perform DDP
     push!(Xs, Xnew) # Store outputs
     push!(Us, Unew)
